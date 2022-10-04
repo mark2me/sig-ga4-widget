@@ -1,0 +1,221 @@
+# Copyright (C) 2022 Simon Chuang
+# This file is distributed under the same license as the GA4 pageview widget plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: GA4 pageview widget 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sig-ga4-widget\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-10-04T11:13:32+08:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: sig-ga4-widget\n"
+
+#. Plugin Name of the plugin
+msgid "GA4 pageview widget"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/mark2me/sig-ga4-widget"
+msgstr ""
+
+#. Description of the plugin
+msgid "Use Google Analytics 4 data to display website pageviews widget"
+msgstr ""
+
+#. Author of the plugin
+msgid "Simon Chuang"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://github.com/mark2me"
+msgstr ""
+
+#: classes/widget.php:17
+msgid "Show GA4 stats"
+msgstr ""
+
+#: classes/widget.php:18
+msgid "Display statistics for GA4 pageviews."
+msgstr ""
+
+#: classes/widget.php:22
+msgid "Browsing Statistics"
+msgstr ""
+
+#. translators: %d is today pageviews
+#: classes/widget.php:25
+msgid "Today pageviews: %d<br>"
+msgstr ""
+
+#. translators: %d is tatal pageviews
+#: classes/widget.php:30
+msgid "Total pageviews: %d<br>"
+msgstr ""
+
+#. translators: %d is today visits
+#: classes/widget.php:37
+msgid "Today visits: %d<br>"
+msgstr ""
+
+#. translators: %d is total visits
+#: classes/widget.php:43
+msgid "Total visits: %d<br>"
+msgstr ""
+
+#: classes/widget.php:83
+msgid "Custom title:"
+msgstr ""
+
+#: classes/widget.php:91
+msgid "Custom items:"
+msgstr ""
+
+#: classes/widget.php:94
+msgid "Show"
+msgstr ""
+
+#: classes/widget.php:95
+msgid "Default"
+msgstr ""
+
+#: classes/widget.php:96
+msgid "Custom label text"
+msgstr ""
+
+#: classes/widget.php:97
+msgid "Adjust"
+msgstr ""
+
+#: classes/widget.php:194
+msgid "No matching record found."
+msgstr ""
+
+#: inc/page_setting.php:9
+msgid "Setup"
+msgstr ""
+
+#: inc/page_setting.php:22
+msgid "Upload key file"
+msgstr ""
+
+#. translators: %s is filename
+#: inc/page_setting.php:29
+msgid "Your key file: %s"
+msgstr ""
+
+#: inc/page_setting.php:30
+msgid "Delete file"
+msgstr ""
+
+#: inc/page_setting.php:34
+msgid "Could not find the key file."
+msgstr ""
+
+#: inc/page_setting.php:43
+msgid "Website property id"
+msgstr ""
+
+#: inc/page_setting.php:45
+msgid "You can find property id numbers at Google Analytics property like  <b>webname(12345678)</b>."
+msgstr ""
+
+#: inc/page_setting.php:49
+msgid "GA data start date"
+msgstr ""
+
+#: inc/page_setting.php:54
+msgid "Cache time (second)"
+msgstr ""
+
+#. translators: %d is seconds
+#: inc/page_setting.php:60
+msgid "Set the cache time to avoid repeated API calls and speed up page loading. (Default time: %d seconds)"
+msgstr ""
+
+#: inc/page_setting.php:67
+msgid "Post pageviews"
+msgstr ""
+
+#: inc/page_setting.php:71
+msgid "Pageview label text"
+msgstr ""
+
+#: inc/page_setting.php:74
+msgid "Default label"
+msgstr ""
+
+#: inc/page_setting.php:81
+msgid "Show on"
+msgstr ""
+
+#: inc/page_setting.php:107
+msgid "Prompt:"
+msgstr ""
+
+#: inc/page_setting.php:108
+msgid "Caution! This plug-in uses the Google Analytics Data API, and there is a daily limit on the number of calls (50,000). If the number of requests exceeds, you may need to pay for it. (You can set the cache time in the settings to avoid exceeding the number of calls)"
+msgstr ""
+
+#: inc/page_setting.php:110
+msgid "How to setup:"
+msgstr ""
+
+#: inc/page_setting.php:116
+#: sig-ga4-widget.php:83
+msgid "GA4 widget config"
+msgstr ""
+
+#: inc/page_setting.php:130
+msgid "Are you sure you want to delete this file?"
+msgstr ""
+
+#: inc/page_show.php:17
+msgid "Current month"
+msgstr ""
+
+#. translators: %1$s is start date, %2$s is end date.
+#: inc/page_show.php:23
+#: inc/page_show.php:42
+msgid "Date range: %1$s ~ %2$s"
+msgstr ""
+
+#: inc/page_show.php:36
+msgid "Current year"
+msgstr ""
+
+#: inc/page_show.php:57
+msgid "Popular Posts (last 7 days)"
+msgstr ""
+
+#: inc/page_show.php:62
+msgid "Page title"
+msgstr ""
+
+#: inc/page_show.php:63
+msgid "Pageviews"
+msgstr ""
+
+#. translators: %d is post pageviews.
+#: sig-ga4-widget.php:41
+msgid "Pageviews: %d"
+msgstr ""
+
+#: sig-ga4-widget.php:69
+msgid "Settings"
+msgstr ""
+
+#: sig-ga4-widget.php:82
+msgid "GA4 charts"
+msgstr ""
+
+#: sig-ga4-widget.php:138
+msgid "Only json files are allowed"
+msgstr ""
+
+#: sig-ga4-widget.php:241
+msgid "Not allow do this action"
+msgstr ""

@@ -1,0 +1,243 @@
+# Copyright (C) 2022 Simon Chuang
+# This file is distributed under the GPLv2.
+msgid ""
+msgstr ""
+"Project-Id-Version: GA4 pageview widget 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sig-ga4-"
+"widget\n"
+"POT-Creation-Date: 2022-10-04T11:13:32+08:00\n"
+"PO-Revision-Date: 2022-10-04 11:14+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Domain: sig-ga4-widget\n"
+
+#. Plugin Name of the plugin
+msgid "GA4 pageview widget"
+msgstr "GA4 瀏覽量小工具"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/mark2me/sig-ga4-widget"
+msgstr "https://github.com/mark2me/sig-ga4-widget"
+
+#. Description of the plugin
+msgid "Use Google Analytics 4 data to display website pageviews widget"
+msgstr "使用 Google Analytics 4 數據顯示網站瀏覽量小工具"
+
+#. Author of the plugin
+msgid "Simon Chuang"
+msgstr "Simon Chuang"
+
+#. Author URI of the plugin
+msgid "https://github.com/mark2me"
+msgstr "https://github.com/mark2me"
+
+#: classes/widget.php:17
+msgid "Show GA4 stats"
+msgstr "顯示 GA4 統計數據"
+
+#: classes/widget.php:18
+msgid "Display statistics for GA4 pageviews."
+msgstr "顯示 GA4 瀏覽次數的統計資料。"
+
+#: classes/widget.php:22
+msgid "Browsing Statistics"
+msgstr "瀏覽統計"
+
+#. translators: %d is today pageviews
+#: classes/widget.php:25
+msgid "Today pageviews: %d<br>"
+msgstr "今日瀏覽：%d<br>"
+
+#. translators: %d is tatal pageviews
+#: classes/widget.php:30
+msgid "Total pageviews: %d<br>"
+msgstr "累計瀏覽：%d<br>"
+
+#. translators: %d is today visits
+#: classes/widget.php:37
+msgid "Today visits: %d<br>"
+msgstr "今日人氣：%d<br>"
+
+#. translators: %d is total visits
+#: classes/widget.php:43
+msgid "Total visits: %d<br>"
+msgstr "累計人氣：%d<br>"
+
+#: classes/widget.php:83
+msgid "Custom title:"
+msgstr "自訂標題："
+
+#: classes/widget.php:91
+msgid "Custom items:"
+msgstr "自訂項目："
+
+#: classes/widget.php:94
+msgid "Show"
+msgstr "顯示"
+
+#: classes/widget.php:95
+msgid "Default"
+msgstr "預設"
+
+#: classes/widget.php:96
+msgid "Custom label text"
+msgstr "自訂標籤文字"
+
+#: classes/widget.php:97
+msgid "Adjust"
+msgstr "調整"
+
+#: classes/widget.php:194
+msgid "No matching record found."
+msgstr "未找到符合的記錄。"
+
+#: inc/page_setting.php:9
+msgid "Setup"
+msgstr "設定"
+
+#: inc/page_setting.php:22
+msgid "Upload key file"
+msgstr "上傳金鑰檔案"
+
+#. translators: %s is filename
+#: inc/page_setting.php:29
+msgid "Your key file: %s"
+msgstr "您的金鑰檔案：%s"
+
+#: inc/page_setting.php:30
+msgid "Delete file"
+msgstr "刪除檔案"
+
+#: inc/page_setting.php:34
+msgid "Could not find the key file."
+msgstr "無法找到金鑰檔案。"
+
+#: inc/page_setting.php:43
+msgid "Website property id"
+msgstr "網站資源ID"
+
+#: inc/page_setting.php:45
+msgid ""
+"You can find property id numbers at Google Analytics property like  "
+"<b>webname(12345678)</b>."
+msgstr "您可以在 Google Analytics 媒體資源中找到媒體資源 ID 號碼。"
+
+#: inc/page_setting.php:49
+msgid "GA data start date"
+msgstr "GA資料開始日"
+
+#: inc/page_setting.php:54
+msgid "Cache time (second)"
+msgstr "暫存時間(秒)"
+
+#. translators: %d is seconds
+#: inc/page_setting.php:60
+msgid ""
+"Set the cache time to avoid repeated API calls and speed up page loading. "
+"(Default time: %d seconds)"
+msgstr ""
+"設置快取時間，避免重複呼叫 API，並加快頁面載入速度。(預設時間：%d 秒)"
+
+#: inc/page_setting.php:67
+msgid "Post pageviews"
+msgstr "文章的瀏覽次數"
+
+#: inc/page_setting.php:71
+msgid "Pageview label text"
+msgstr "瀏覽次數的標籤文字"
+
+#: inc/page_setting.php:74
+msgid "Default label"
+msgstr "預設標籤"
+
+#: inc/page_setting.php:81
+msgid "Show on"
+msgstr "顯示於"
+
+#: inc/page_setting.php:107
+msgid "Prompt:"
+msgstr "溫馨提醒："
+
+#: inc/page_setting.php:108
+msgid ""
+"Caution! This plug-in uses the Google Analytics Data API, and there is a "
+"daily limit on the number of calls (50,000). If the number of requests "
+"exceeds, you may need to pay for it. (You can set the cache time in the "
+"settings to avoid exceeding the number of calls)"
+msgstr ""
+"請注意！本外掛使用 Google Analytics Data API，每日有呼叫次數限制(50,000)，"
+"超過的請求次數，您可能需要負擔費用。(您可以在設定中以設定快取時間來避免超"
+"出呼叫次數)"
+
+#: inc/page_setting.php:110
+msgid "How to setup:"
+msgstr "如何設定："
+
+#: inc/page_setting.php:116 sig-ga4-widget.php:83
+msgid "GA4 widget config"
+msgstr "GA4 小工具設定"
+
+#: inc/page_setting.php:130
+msgid "Are you sure you want to delete this file?"
+msgstr "您確定要刪除這個檔案嗎？"
+
+#: inc/page_show.php:17
+msgid "Current month"
+msgstr "本月"
+
+#. translators: %1$s is start date, %2$s is end date.
+#: inc/page_show.php:23 inc/page_show.php:42
+msgid "Date range: %1$s ~ %2$s"
+msgstr "日期時間範圍：%1$s ~ %2$s"
+
+#: inc/page_show.php:36
+msgid "Current year"
+msgstr "今年"
+
+#: inc/page_show.php:57
+msgid "Popular Posts (last 7 days)"
+msgstr "熱門文章(過去7天)"
+
+#: inc/page_show.php:62
+msgid "Page title"
+msgstr "頁面標題"
+
+#: inc/page_show.php:63
+msgid "Pageviews"
+msgstr "瀏覽次數"
+
+#. translators: %d is post pageviews.
+#: sig-ga4-widget.php:41
+msgid "Pageviews: %d"
+msgstr "瀏覽次數：%d"
+
+#: sig-ga4-widget.php:69
+msgid "Settings"
+msgstr "設定"
+
+#: sig-ga4-widget.php:82
+msgid "GA4 charts"
+msgstr "GA4 統計圖表"
+
+#: sig-ga4-widget.php:138
+msgid "Only json files are allowed"
+msgstr "只允許 json 檔案"
+
+#: sig-ga4-widget.php:241
+msgid "Not allow do this action"
+msgstr "未允許執行此操作"
+
+#~ msgid "Key path: %s"
+#~ msgstr "金鑰路徑：%s"
+
+#~ msgid "The key has not been uploaded"
+#~ msgstr "金鑰尚未上傳"
+
+#~ msgid "Cumulative views start date:"
+#~ msgstr "累計瀏覽起始日："
