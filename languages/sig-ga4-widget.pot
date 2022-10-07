@@ -1,21 +1,21 @@
 # Copyright (C) 2022 Simon Chuang
-# This file is distributed under the same license as the GA4 pageview widget plugin.
+# This file is distributed under the same license as the Sig GA4 Widget plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: GA4 pageview widget 1.0\n"
+"Project-Id-Version: Sig GA4 Widget 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sig-ga4-widget\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-04T11:13:32+08:00\n"
+"POT-Creation-Date: 2022-10-07T11:53:25+08:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: sig-ga4-widget\n"
 
 #. Plugin Name of the plugin
-msgid "GA4 pageview widget"
+msgid "Sig GA4 Widget"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -191,11 +191,11 @@ msgstr ""
 msgid "Popular Posts (last 7 days)"
 msgstr ""
 
-#: inc/page_show.php:62
+#: inc/page_show.php:67
 msgid "Page title"
 msgstr ""
 
-#: inc/page_show.php:63
+#: inc/page_show.php:68
 msgid "Pageviews"
 msgstr ""
 
@@ -216,6 +216,6 @@ msgstr ""
 msgid "Only json files are allowed"
 msgstr ""
 
-#: sig-ga4-widget.php:241
+#: sig-ga4-widget.php:244
 msgid "Not allow do this action"
 msgstr ""

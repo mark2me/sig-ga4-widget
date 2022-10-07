@@ -81,21 +81,21 @@ class SIGA4W_ga4 {
                     $item = [];
 
                     foreach( $row->getDimensionValues() as $index=>$d ){
-                        $item[$dimensionVars[$index]] = $d->getValue();
+                        $item[$dimensionVars[$index]] = esc_attr( $d->getValue() );
                     }
 
                     foreach( $metricVars as $index=>$name ){
-                        $item[$name] = $row->getMetricValues()[$index]->getValue();
+                        $item[$name] = esc_attr( $row->getMetricValues()[$index]->getValue() );
                     }
 
                     $data[] = $item;
                 }else{
 
-                    $key = $row->getDimensionValues()[0]->getValue();
+                    $key = esc_attr( $row->getDimensionValues()[0]->getValue() );
                     $data[$key] = [];
 
                     foreach( $metricVars as $index=>$name ){
-                        $data[$key][$name] = $row->getMetricValues()[$index]->getValue();
+                        $data[$key][$name] = esc_attr( $row->getMetricValues()[$index]->getValue() );
                     }
 
                 }
@@ -110,7 +110,11 @@ class SIGA4W_ga4 {
             siga4w_log($e->getMessage());
             siga4w_log('####################################');
 
-            return json_decode( $e->getMessage(), true );
+            if( siga4w_isJson($e->getMessage()) ){
+                return json_decode( $e->getMessage(), true );
+            }else{
+                return [ 'message'=> $e->getMessage() ];
+            }
         }
     }
 

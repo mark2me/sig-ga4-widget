@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             ?>
             <h3><?php _e( 'Current month', 'sig-ga4-widget' ) ?></h3>
             <div id="ga4_daily_chart" style="width:100%;height: 250px;background-color: #fff;"><?php
-                if( isset($theMonth['message']) ) echo $theMonth['message'];
+                if( !empty($theMonth['message']) ) echo esc_html($theMonth['message']);
             ?></div>
             <i><?php
                 /* translators: %1$s is start date, %2$s is end date. */
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             ?>
             <h3><?php _e( 'Current year' , 'sig-ga4-widget' ) ?></h3>
             <div id="ga4_month_chart" style="width:100%;height: 250px;background-color: #fff;"><?php
-                if( isset($theYear['message']) ) echo $theYear['message'];
+                if( !empty($theYear['message']) ) echo esc_html($theYear['message']);
             ?></div>
             <i><?php
                 /* translators: %1$s is start date, %2$s is end date. */
@@ -55,6 +55,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                     ], 'cache_hot' );
             ?>
             <h3><?php _e( 'Popular Posts (last 7 days)', 'sig-ga4-widget' ) ?></h3>
+            <?php
+            if( !empty($theHot['message']) ) {
+                echo esc_html($theHot['message']);
+            }else{
+            ?>
             <table class="wp-list-table widefat striped table-view-list">
             <thead>
                 <tr>
@@ -67,12 +72,13 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php
                 if( is_array($theHot) && count($theHot)>0 ){
                     foreach( $theHot as $k => $rs) {
-                        echo '<tr><td align="center">'.($k+1).'</td><td><a href="https://'.$rs['fullPageUrl'].'" target="_blank">'.$rs['pageTitle'].'</a></td><td align="center">'.$rs['screenPageViews'].'</td></tr>';
+                        echo '<tr><td align="center">'.esc_html($k+1).'</td><td><a href="'.esc_url($rs['fullPageUrl']).'" target="_blank">'.esc_attr($rs['pageTitle']).'</a></td><td align="center">'.esc_attr($rs['screenPageViews']).'</td></tr>';
                     }
                 }
             ?>
             </tbody>
             </table>
+            <?php } ?>
         </div>
 
     </div>

@@ -121,6 +121,15 @@ function siga4w_day_loop($dateString='1 day',$day=array(),$format='Y-m-d'){
 }
 
 /**
+ *  check is json
+ */
+
+function siga4w_isJson($string) {
+   json_decode($string);
+   return json_last_error() === JSON_ERROR_NONE;
+}
+
+/**
  *  Add log
  */
 if (!function_exists('write_log')) {

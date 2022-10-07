@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                         echo sprintf( __( 'Your key file: %s', 'sig-ga4-widget' ) , $file['basename'] );
                                     ?><p><button id="btn-del-file" class="button" type="button" name=""><?php _e( 'Delete file', 'sig-ga4-widget' )?></button></p>
                                 <?php else: ?>
-                                    <input type="file" class="regular-text" name="json_key" />
+                                    <input type="file" class="regular-text" name="json_key" value="" />
                                     <p class="description"><?php
                                         _e( 'Could not find the key file.', 'sig-ga4-widget' );
                                     ?></p>
@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <td><input type="text" class="regular-text" name="<?php echo SIGA4W_OPTION?>[post_pv_label]" value="<?php if ( !empty($this->options['post_pv_label']) ) echo esc_attr($this->options['post_pv_label']); ?>" />
                                 <p><?
                                     _e( 'Default label', 'sig-ga4-widget' );
-                                    echo '<code>' . $this->def_pv_label . '</code>';
+                                    echo '<code>' . esc_attr($this->def_pv_label) . '</code>';
                                 ?></p>
                             </td>
                         </tr>
@@ -109,10 +109,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     <h2><?php _e( 'How to setup:', 'sig-ga4-widget' ); ?></h2>
                     <ol style="font-size: 15px;">
-                        <li>登入 <a href="https://console.cloud.google.com/apis/" target="_blank">https://console.cloud.google.com/apis/</a>。點左側選單<b>「已啟用的API和服務」</b>：啟用「Google Analytics Data API」服務（已啟用過的就不需此步驟）。</li>
+                        <li>登入 https://console.cloud.google.com/apis/ 。點左側選單<b>「已啟用的API和服務」</b>：啟用「Google Analytics Data API」服務（已啟用過的就不需此步驟）。</li>
                         <li>點左側選單<b>「憑證」</b>：點<b>「+建立憑證」</b> -> 選<b>「服務帳戶」</b>（輸入服務帳戶名稱、服務帳戶ID，並記住該員電子郵件地址，點<b>「建立並繼續」</b>到下一步）。</li>
                         <li>選擇角色：選<b>「App Engine 管理員」</b>-> 點<b>「繼續」</b>，再點<b>「完成」</b>。在<b>「服務帳戶」</b>清單，點該員電子郵件進入。點<b>「金鑰」</b> -> 點<b>「新增金鑰」</b> -> 選<b>「建立新的金鑰」</b>，金鑰類型選<b>「json」</b>並保存下載檔案。</li>
-                        <li>登入<a href="https://analytics.google.com/" target="_blank">https://analytics.google.com/</a>。點左下方<b>「管理」</b>，然後前往所需的帳戶/資源。點入<b>「帳戶存取管理」</b>中，按一下 [+] ，然後點選<b>「新增使用者」</b>，將剛剛建立的服務帳戶電子郵件新增進去（角色選檢視者即可）。</li>
+                        <li>登入 https://analytics.google.com/ 。點左下方<b>「管理」</b>，然後前往所需的帳戶/資源。點入<b>「帳戶存取管理」</b>中，按一下 [+] ，然後點選<b>「新增使用者」</b>，將剛剛建立的服務帳戶電子郵件新增進去（角色選檢視者即可）。</li>
                         <li>如果您資料建立正確，將會在選單「<a href="<?php echo admin_url('admin.php?page=siga4w_page')?>"><?php _e('GA4 widget config', 'sig-ga4-widget')?></a>」頁面中看到 Google Analytics 的過去統計資料。
                     </ol>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: GA4 pageview widget
+Plugin Name: Sig GA4 Widget
 Plugin URI: https://github.com/mark2me/sig-ga4-widget
 Description: Use Google Analytics 4 data to display website pageviews widget
 Author: Simon Chuang
@@ -33,8 +33,8 @@ class SIGA4W_init{
 
     public $pv_label = '';
 
-    public function __construct()
-    {
+    public function __construct() {
+
         $this->options = get_option(SIGA4W_OPTION);
 
         /* translators: %d is post pageviews. */
@@ -127,14 +127,14 @@ class SIGA4W_init{
 
             add_filter( 'upload_mimes', [ $this, 'cb_add_upload_mimes' ] );
 
-            $file = $_FILES['json_key'];
-            $filename = $_FILES['json_key']['name'];
+            $file = sanitize_text_field( $_FILES['json_key'] );
+            $filename = sanitize_text_field( $_FILES['json_key']['name'] );
 
             $ext = pathinfo( $filename, PATHINFO_EXTENSION );
 
             if ( 'json' !== $ext ) {
 
-                unlink( $_FILES['json_key']['name'] );
+                unlink( sanitize_text_field( $_FILES['json_key']['tmp_name'] ) );
                 add_settings_error( 'unsupported_file', 'unsupported_file', esc_html__( 'Only json files are allowed', 'sig-ga4-widget' ) );
 
             }else{
@@ -143,13 +143,13 @@ class SIGA4W_init{
                     require_once ABSPATH . 'wp-admin/includes/file.php';
                 }
 
-                $temp = wp_handle_upload($_FILES["json_key"], [
+                $temp = wp_handle_upload( $_FILES["json_key"], [
                     'test_form' => false,
                     'unique_filename_callback' => [ $this, 'cb_rename_file' ]
                 ]);
 
                 if( isset( $temp['error'] ) ){
-                    add_settings_error( 'unsupported_file', 'unsupported_file', $temp['error'] );
+                    add_settings_error( 'unsupported_file', 'unsupported_file', esc_attr($temp['error']) );
                 }else if ( $temp && !isset( $temp['error'] ) ) {
                     $option['json_key'] = $temp['file'];
                 }
@@ -163,6 +163,9 @@ class SIGA4W_init{
 
             $option['post_pv_label'] = siga4w_strip_tags($option['post_pv_label']);
         }
+
+        delete_transient('siga4w_get_today_cache');
+        delete_transient('siga4w_get_all_cache');
 
         return $option;
     }
@@ -178,18 +181,18 @@ class SIGA4W_init{
     /**
      *  rename upload filename
      */
-    public function cb_rename_file($dir, $name, $ext){
+    public function cb_rename_file($dir, $name, $ext) {
         return time().'_'.md5($name).$ext;
     }
 
     /**
      *  echo widget data
      */
-    public function add_wpajax_widget_data(){
+    public function add_wpajax_widget_data() {
 
-        $id = ( isset($_GET['id']) && !empty($_GET['id']) ) ? $_GET['id'] : '';
+        if( !empty($_GET['id']) ){
 
-        if( !empty($id) ){
+            $id = sanitize_text_field( wp_unslash( $_GET['id'] ) );
 
             if( check_ajax_referer( 'siga4w-widget-'.$id, false, false ) === 1){
                 $array = explode("-",$id);
@@ -213,7 +216,7 @@ class SIGA4W_init{
     /**
      *  Add pageviews on post content
      */
-    public function add_post_pv($content){
+    public function add_post_pv($content) {
 
         if( !is_front_page() && is_singular() ) {
 
@@ -232,7 +235,7 @@ class SIGA4W_init{
     /**
      *  Delete json file
      */
-    public function delete_json_file(){
+    public function delete_json_file() {
 
         if( check_ajax_referer( 'delete_json_file', false, false ) !== 1){
 
@@ -264,7 +267,7 @@ class SIGA4W_init{
      *  Get post pageviews
      *  @return int
      */
-    private function get_pageviews($postId=0){
+    private function get_pageviews($postId=0) {
 
         if( empty($postId) ) $postId = get_the_ID();
 
