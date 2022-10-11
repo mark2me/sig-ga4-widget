@@ -21,26 +21,26 @@ class SIGA4W_widget extends WP_Widget {
         $this->defaults =  [
     		'title' => __( 'Browsing Statistics', 'sig-ga4-widget' ),
             'pageview' => [
-                'today' => [    /* translators: %d is today pageviews  */
-                    'label' => __( 'Today pageviews: %d<br>', 'sig-ga4-widget' ),
+                'today' => [    /* translators: %s is today pageviews  */
+                    'label' => __( 'Today pageviews: %s<br>', 'sig-ga4-widget' ),
                     'show' => 'yes',
                     'adjust' => 0
                 ],
-                'all' => [      /* translators: %d is tatal pageviews  */
-                    'label' => __( 'Total pageviews: %d<br>', 'sig-ga4-widget' ),
+                'all' => [      /* translators: %s is tatal pageviews  */
+                    'label' => __( 'Total pageviews: %s<br>', 'sig-ga4-widget' ),
                     'show' => 'yes',
                     'adjust' => 0
                 ]
             ],
             'visit' => [
-                'today' => [    /* translators: %d is today visits  */
-                    'label' => __( 'Today visits: %d<br>', 'sig-ga4-widget' ),
+                'today' => [    /* translators: %s is today visits  */
+                    'label' => __( 'Today visits: %s<br>', 'sig-ga4-widget' ),
                     'show' => '',
                     'adjust' => 0
                 ],
                 'all' => [
-                                /* translators: %d is total visits  */
-                    'label' => __( 'Total visits: %d<br>', 'sig-ga4-widget' ),
+                                /* translators: %s is total visits  */
+                    'label' => __( 'Total visits: %s<br>', 'sig-ga4-widget' ),
                     'show' => '',
                     'adjust' => 0
                 ]
@@ -85,63 +85,71 @@ class SIGA4W_widget extends WP_Widget {
         </p>
         <p>
             <style type="text/css">
-            table.siga4w{ width:100%; max-width:500px; border-collapse: collapse;border-spacing: 0;}
+            table.siga4w{ width:100%; max-width:600px; border-collapse: collapse;border-spacing: 0;}
             table.siga4w td{ border:1px solid #eee;padding: 2px 10px;}
             </style>
             <label><?php _e( 'Custom items:' , 'sig-ga4-widget' )?></label>
             <table class="siga4w">
                 <tr align="center">
-                    <td width="60"><label><?php _e( 'Show', 'sig-ga4-widget' ); ?></label></td>
-                    <td width="150"><label><?php _e( 'Default', 'sig-ga4-widget' ); ?></label></td>
-                    <td width="200"><label><?php _e( 'Custom label text', 'sig-ga4-widget' ); ?></label></td>
-                    <td width="*"><label><?php _e( 'Adjust', 'sig-ga4-widget' ); ?></label></td>
+                    <td width="50"><label><?php _e( 'Show', 'sig-ga4-widget' ); ?></label></td>
+                    <td width="140"><label><?php _e( 'Default', 'sig-ga4-widget' ); ?></label></td>
+                    <td width="*"><label><?php _e( 'Custom label text', 'sig-ga4-widget' ); ?></label></td>
+                    <td width="100"><label><?php _e( 'Adjust', 'sig-ga4-widget' ); ?></label></td>
                 </tr>
                 <tr align="center">
                     <td>
                         <input class="" type="checkbox" value="yes" name="<?php echo $this->get_field_name('pageview_today_show');?>" <?php checked('yes',$instance['pageview_today_show'])?>>
                     </td>
-                    <td><label><?php echo $this->def_val['pageview_today_label'];?></label></td>
+                    <td align="left">
+                        <label><?php echo $this->def_val['pageview_today_label'];?></label>
+                    </td>
                     <td>
                         <input class="widefat" type="text" name="<?php echo $this->get_field_name('pageview_today_label');?>" value="<?php echo esc_attr($instance['pageview_today_label']); ?>">
                     </td>
                     <td>
-                        <input class="widefat" type="number" name="<?php echo $this->get_field_name('pageview_today_adjust');?>" value="<?php echo esc_attr($instance['pageview_today_adjust']); ?>">
+                        <input class="widefat" type="text" name="<?php echo $this->get_field_name('pageview_today_adjust');?>" value="<?php echo esc_attr($instance['pageview_today_adjust']); ?>" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
                     </td>
                 </tr>
                 <tr align="center">
                     <td>
                         <input class="" type="checkbox" value="yes" name="<?php echo $this->get_field_name('pageview_all_show');?>" <?php checked('yes',$instance['pageview_all_show'])?>>
                     </td>
-                    <td><label><?php echo $this->def_val['pageview_all_label']?></label></td>
+                    <td align="left">
+                        <label><?php echo $this->def_val['pageview_all_label']?></label>
+                    </td>
                     <td>
                         <input class="widefat" type="text" name="<?php echo $this->get_field_name('pageview_all_label');?>" value="<?php echo esc_attr($instance['pageview_all_label']); ?>">
                     </td>
                     <td width="*">
-                        <input class="widefat" type="number" name="<?php echo $this->get_field_name('pageview_all_adjust');?>" value="<?php echo esc_attr($instance['pageview_all_adjust']); ?>">
+                        <input class="widefat" type="text" name="<?php echo $this->get_field_name('pageview_all_adjust');?>" value="<?php echo esc_attr($instance['pageview_all_adjust']); ?>" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
                     </td>
                 </tr>
                 <tr align="center">
                     <td>
                         <input class="" type="checkbox" value="yes" name="<?php echo $this->get_field_name('visit_today_show');?>" <?php checked('yes',$instance['visit_today_show'])?>>
                     </td>
-                    <td><label><?php echo $this->def_val['visit_today_label']?></label></td>
+                    <td align="left">
+                        <label><?php echo $this->def_val['visit_today_label']?></label>
+                    </td>
                     <td>
                         <input class="widefat" type="text" name="<?php echo $this->get_field_name('visit_today_label');?>" value="<?php echo esc_attr($instance['visit_today_label']); ?>">
                     </td>
                     <td width="*">
-                        <input class="widefat" type="number" name="<?php echo $this->get_field_name('visit_today_adjust');?>" value="<?php echo esc_attr($instance['visit_today_adjust']); ?>">
+                        <input class="widefat" type="text" name="<?php echo $this->get_field_name('visit_today_adjust');?>" value="<?php echo esc_attr($instance['visit_today_adjust']); ?>" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
                     </td>
                 </tr>
                 <tr align="center">
                     <td>
                         <input class="" type="checkbox" value="yes" name="<?php echo $this->get_field_name('visit_all_show');?>" <?php checked('yes',$instance['visit_all_show'])?>>
                     </td>
-                    <td><label><?php echo $this->def_val['visit_all_label']?></label></td>
+                    <td align="left">
+                        <label><?php echo $this->def_val['visit_all_label']?></label>
+                    </td>
                     <td>
                         <input class="widefat" type="text" name="<?php echo $this->get_field_name('visit_all_label');?>" value="<?php echo esc_attr($instance['visit_all_label']); ?>">
                     </td>
                     <td width="*">
-                        <input class="widefat" type="number" name="<?php echo $this->get_field_name('visit_all_adjust');?>" value="<?php echo esc_attr($instance['visit_all_adjust']); ?>">
+                        <input class="widefat" type="text" name="<?php echo $this->get_field_name('visit_all_adjust');?>" value="<?php echo esc_attr($instance['visit_all_adjust']); ?>" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
                     </td>
                 </tr>
             </table>
@@ -172,8 +180,7 @@ class SIGA4W_widget extends WP_Widget {
         $instance['visit_all_adjust']   = (!empty($new_instance['visit_all_adjust'])) ? preg_replace( '/[^0-9]/', '', $new_instance['visit_all_adjust']) : 0;
 
         //clear transient
-        delete_transient('siga4w_get_today_cache');
-        delete_transient('siga4w_get_all_cache');
+        siga4w_del_cache();
 
         return $instance;
     }
@@ -214,7 +221,7 @@ class SIGA4W_widget extends WP_Widget {
                 $pageview_today_label = $this->def_val['pageview_today_label'];
             }
 
-            $content .= sprintf( $pageview_today_label, ($nums['pageview_today'] += (int)$pageview_today_adjust) );
+            $content .= sprintf( $pageview_today_label, number_format($nums['pageview_today'] += (int)$pageview_today_adjust) );
         }
 
         //累計瀏覽
@@ -224,7 +231,7 @@ class SIGA4W_widget extends WP_Widget {
                 $pageview_all_label = $this->def_val['pageview_all_label'];
             }
 
-            $content .= sprintf( $pageview_all_label, ($nums['pageview_all'] += (int)$pageview_all_adjust) );
+            $content .= sprintf( $pageview_all_label, number_format($nums['pageview_all'] += (int)$pageview_all_adjust) );
         }
 
         //今日人氣
@@ -234,7 +241,7 @@ class SIGA4W_widget extends WP_Widget {
                 $visit_today_label = $this->def_val['visit_today_label'];
             }
 
-            $content .= sprintf( $visit_today_label, ($nums['visit_today'] += (int)$visit_today_adjust) );
+            $content .= sprintf( $visit_today_label, number_format($nums['visit_today'] += (int)$visit_today_adjust) );
         }
 
         //累計人氣
@@ -244,7 +251,7 @@ class SIGA4W_widget extends WP_Widget {
                 $visit_all_label = $this->def_val['visit_all_label'];
             }
 
-            $content .= sprintf( $visit_all_label, ($nums['visit_all'] += (int)$visit_all_adjust) );
+            $content .= sprintf( $visit_all_label, number_format($nums['visit_all'] += (int)$visit_all_adjust) );
         }
 
         return $content;

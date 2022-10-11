@@ -7,10 +7,10 @@ Author: Simon Chuang
 Author URI: https://github.com/mark2me
 Text Domain: sig-ga4-widget
 Domain Path: /languages/
-Version: 1.0
+Version: 1.0.1
 */
 
-define( 'SIGA4W_VERSION', '1.0' );
+define( 'SIGA4W_VERSION', '1.0.1' );
 define( 'SIGA4W_OPTION', '_siga4w_setting' );
 define( 'SIGA4W_OPTION_GROUP', '_siga4w_setting_group' );
 define( 'SIGA4W_DIR', dirname(__FILE__) );
@@ -22,6 +22,7 @@ define( 'SIGA4W_BEGIN_DATE', '2020-01-01');
 
 require_once( SIGA4W_DIR . '/vendor/autoload.php' );
 require_once( SIGA4W_DIR . '/inc/helper.php' );
+require_once( SIGA4W_DIR . '/classes/uppgrade.php' );
 
 new SIGA4W_init();
 
@@ -37,8 +38,12 @@ class SIGA4W_init{
 
         $this->options = get_option(SIGA4W_OPTION);
 
-        /* translators: %d is post pageviews. */
-        $this->def_pv_label = __( 'Pageviews: %d', 'sig-ga4-widget' );
+        $upgrade = new SIGA4W_upgrade($this->options);
+        $upgrade->run();
+
+
+        /* translators: %s is post pageviews. */
+        $this->def_pv_label = __( 'Pageviews: %s', 'sig-ga4-widget' );
 
         add_filter( 'plugin_action_links_'.plugin_basename(__FILE__), [ $this , 'add_settings_link' ] );
 
@@ -164,8 +169,8 @@ class SIGA4W_init{
             $option['post_pv_label'] = siga4w_strip_tags($option['post_pv_label']);
         }
 
-        delete_transient('siga4w_get_today_cache');
-        delete_transient('siga4w_get_all_cache');
+        //clear transient
+        siga4w_del_cache();
 
         return $option;
     }

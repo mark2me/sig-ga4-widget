@@ -21,7 +21,7 @@ function siga4w_get_data($args=[],$cache_name=''){
         $data = get_transient($cache_name);
     }
 
-    if( !$data ){
+    if( !$data && class_exists('SIGA4W_ga4') ){
 
         $options = get_option(SIGA4W_OPTION);
 
@@ -127,6 +127,14 @@ function siga4w_day_loop($dateString='1 day',$day=array(),$format='Y-m-d'){
 function siga4w_isJson($string) {
    json_decode($string);
    return json_last_error() === JSON_ERROR_NONE;
+}
+
+/**
+ *  @since 1.0.1
+ */
+function siga4w_del_cache(){
+    delete_transient('siga4w_get_today_cache');
+    delete_transient('siga4w_get_all_cache');
 }
 
 /**

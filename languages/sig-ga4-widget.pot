@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Sig GA4 Widget plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Sig GA4 Widget 1.0\n"
+"Project-Id-Version: Sig GA4 Widget 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sig-ga4-widget\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-07T11:53:25+08:00\n"
+"POT-Creation-Date: 2022-10-11T14:29:19+08:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: sig-ga4-widget\n"
@@ -46,24 +46,24 @@ msgstr ""
 msgid "Browsing Statistics"
 msgstr ""
 
-#. translators: %d is today pageviews
+#. translators: %s is today pageviews
 #: classes/widget.php:25
-msgid "Today pageviews: %d<br>"
+msgid "Today pageviews: %s<br>"
 msgstr ""
 
-#. translators: %d is tatal pageviews
+#. translators: %s is tatal pageviews
 #: classes/widget.php:30
-msgid "Total pageviews: %d<br>"
+msgid "Total pageviews: %s<br>"
 msgstr ""
 
-#. translators: %d is today visits
+#. translators: %s is today visits
 #: classes/widget.php:37
-msgid "Today visits: %d<br>"
+msgid "Today visits: %s<br>"
 msgstr ""
 
-#. translators: %d is total visits
+#. translators: %s is total visits
 #: classes/widget.php:43
-msgid "Total visits: %d<br>"
+msgid "Total visits: %s<br>"
 msgstr ""
 
 #: classes/widget.php:83
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Adjust"
 msgstr ""
 
-#: classes/widget.php:194
+#: classes/widget.php:201
 msgid "No matching record found."
 msgstr ""
 
@@ -165,7 +165,7 @@ msgid "How to setup:"
 msgstr ""
 
 #: inc/page_setting.php:116
-#: sig-ga4-widget.php:83
+#: sig-ga4-widget.php:88
 msgid "GA4 widget config"
 msgstr ""
 
@@ -199,23 +199,33 @@ msgstr ""
 msgid "Pageviews"
 msgstr ""
 
-#. translators: %d is post pageviews.
-#: sig-ga4-widget.php:41
-msgid "Pageviews: %d"
+#: inc/page_show.php:112
+#: inc/page_show.php:143
+msgid "pageviews"
 msgstr ""
 
-#: sig-ga4-widget.php:69
+#: inc/page_show.php:112
+#: inc/page_show.php:143
+msgid "visits"
+msgstr ""
+
+#. translators: %s is post pageviews.
+#: sig-ga4-widget.php:46
+msgid "Pageviews: %s"
+msgstr ""
+
+#: sig-ga4-widget.php:74
 msgid "Settings"
 msgstr ""
 
-#: sig-ga4-widget.php:82
+#: sig-ga4-widget.php:87
 msgid "GA4 charts"
 msgstr ""
 
-#: sig-ga4-widget.php:138
+#: sig-ga4-widget.php:143
 msgid "Only json files are allowed"
 msgstr ""
 
-#: sig-ga4-widget.php:244
+#: sig-ga4-widget.php:249
 msgid "Not allow do this action"
 msgstr ""

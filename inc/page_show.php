@@ -4,7 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-
+<style type="text/css">
+#ga4_daily_chart, #ga4_month_chart{
+    width:100%;height: 250px;background-color: #fff;border:1px solid #c3c4c7;margin-bottom: 10px;
+}
+</style>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6" style="margin-bottom: 30px;">
@@ -15,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     ], 'cache_theMonth' );
             ?>
             <h3><?php _e( 'Current month', 'sig-ga4-widget' ) ?></h3>
-            <div id="ga4_daily_chart" style="width:100%;height: 250px;background-color: #fff;"><?php
+            <div id="ga4_daily_chart"><?php
                 if( !empty($theMonth['message']) ) echo esc_html($theMonth['message']);
             ?></div>
             <i><?php
@@ -34,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     ], 'cache_theYear' );
             ?>
             <h3><?php _e( 'Current year' , 'sig-ga4-widget' ) ?></h3>
-            <div id="ga4_month_chart" style="width:100%;height: 250px;background-color: #fff;"><?php
+            <div id="ga4_month_chart"><?php
                 if( !empty($theYear['message']) ) echo esc_html($theYear['message']);
             ?></div>
             <i><?php
@@ -99,17 +103,19 @@ if ( ! defined( 'ABSPATH' ) ) {
         ];
     }
 ?>
-    new Morris.Line({
+    new Morris.Area({
         element: 'ga4_daily_chart',
         data: <?php echo json_encode($days); ?>,
+        behaveLikeLine: true,
         xkey: 'x',
         xLabels: 'day',
         xLabelFormat: function(x) {
             return (x.getMonth()+1) + '/' + x.getDate();
         },
         ykeys: ['a','b'],
-        labels: ['Pageviews','Visits'],
-        fillOpacity: 1.0,
+        labels: ['<?php _e( 'pageviews', 'sig-ga4-widget' )?>','<?php _e( 'visits', 'sig-ga4-widget' )?>'],
+        fillOpacity: 0.6,
+        lineColors: ['#7be3f3','#17a2b8'],
         resize: true
     });
 <?php endif; ?>
@@ -128,17 +134,19 @@ if ( ! defined( 'ABSPATH' ) ) {
     }
 
 ?>
-    new Morris.Line({
+    new Morris.Area({
         element: 'ga4_month_chart',
         data: <?php echo json_encode($months); ?>,
+        behaveLikeLine: true,
         xkey: 'x',
         xLabels: 'month',
         xLabelFormat: function(x) {
             return x.getFullYear() + '/' + (x.getMonth()+1);
         },
         ykeys: ['a','b'],
-        labels: ['Pageview','Visits'],
-        fillOpacity: 1.0,
+        labels: ['<?php _e( 'pageviews', 'sig-ga4-widget' )?>','<?php _e( 'visits', 'sig-ga4-widget' )?>'],
+        fillOpacity: 0.6,
+        lineColors: ['#7be3f3','#17a2b8'],
         resize: true
     });
 <?php endif; ?>

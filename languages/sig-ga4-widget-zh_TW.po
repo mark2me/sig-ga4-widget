@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Sig GA4 widget 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sig-ga4-"
 "widget\n"
-"POT-Creation-Date: 2022-10-07T11:53:25+08:00\n"
-"PO-Revision-Date: 2022-10-07 11:55+0800\n"
+"POT-Creation-Date: 2022-10-11T14:29:19+08:00\n"
+"PO-Revision-Date: 2022-10-11 14:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 msgid "Sig GA4 Widget"
-msgstr ""
+msgstr "Sig GA4 Widget"
 
 #. Plugin URI of the plugin
 msgid "https://github.com/mark2me/sig-ga4-widget"
@@ -49,25 +49,25 @@ msgstr "顯示 GA4 瀏覽次數的統計資料。"
 msgid "Browsing Statistics"
 msgstr "瀏覽統計"
 
-#. translators: %d is today pageviews
+#. translators: %s is today pageviews
 #: classes/widget.php:25
-msgid "Today pageviews: %d<br>"
-msgstr "今日瀏覽：%d<br>"
+msgid "Today pageviews: %s<br>"
+msgstr "今日瀏覽：%s<br>"
 
-#. translators: %d is tatal pageviews
+#. translators: %s is tatal pageviews
 #: classes/widget.php:30
-msgid "Total pageviews: %d<br>"
-msgstr "累計瀏覽：%d<br>"
+msgid "Total pageviews: %s<br>"
+msgstr "累計瀏覽：%s<br>"
 
-#. translators: %d is today visits
+#. translators: %s is today visits
 #: classes/widget.php:37
-msgid "Today visits: %d<br>"
-msgstr "今日人氣：%d<br>"
+msgid "Today visits: %s<br>"
+msgstr "今日人氣：%s<br>"
 
-#. translators: %d is total visits
+#. translators: %s is total visits
 #: classes/widget.php:43
-msgid "Total visits: %d<br>"
-msgstr "累計人氣：%d<br>"
+msgid "Total visits: %s<br>"
+msgstr "累計人氣：%s<br>"
 
 #: classes/widget.php:83
 msgid "Custom title:"
@@ -93,7 +93,7 @@ msgstr "自訂標籤文字"
 msgid "Adjust"
 msgstr "調整"
 
-#: classes/widget.php:194
+#: classes/widget.php:201
 msgid "No matching record found."
 msgstr "未找到符合的記錄。"
 
@@ -179,7 +179,7 @@ msgstr ""
 msgid "How to setup:"
 msgstr "如何設定："
 
-#: inc/page_setting.php:116 sig-ga4-widget.php:83
+#: inc/page_setting.php:116 sig-ga4-widget.php:88
 msgid "GA4 widget config"
 msgstr "GA4 小工具設定"
 
@@ -212,24 +212,32 @@ msgstr "頁面標題"
 msgid "Pageviews"
 msgstr "瀏覽次數"
 
-#. translators: %d is post pageviews.
-#: sig-ga4-widget.php:41
-msgid "Pageviews: %d"
-msgstr "瀏覽次數：%d"
+#: inc/page_show.php:112 inc/page_show.php:143
+msgid "pageviews"
+msgstr "瀏覽"
 
-#: sig-ga4-widget.php:69
+#: inc/page_show.php:112 inc/page_show.php:143
+msgid "visits"
+msgstr "造訪"
+
+#. translators: %s is post pageviews.
+#: sig-ga4-widget.php:46
+msgid "Pageviews: %s"
+msgstr "瀏覽次數：%s"
+
+#: sig-ga4-widget.php:74
 msgid "Settings"
 msgstr "設定"
 
-#: sig-ga4-widget.php:82
+#: sig-ga4-widget.php:87
 msgid "GA4 charts"
 msgstr "GA4 統計圖表"
 
-#: sig-ga4-widget.php:138
+#: sig-ga4-widget.php:143
 msgid "Only json files are allowed"
 msgstr "只允許 json 檔案"
 
-#: sig-ga4-widget.php:244
+#: sig-ga4-widget.php:249
 msgid "Not allow do this action"
 msgstr "未允許執行此操作"
 
