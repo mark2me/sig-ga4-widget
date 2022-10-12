@@ -3,6 +3,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+settings_errors( 'siga4w-settings-notices' );
+
 ?>
 
 <div class="wrap">
@@ -64,7 +66,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                     </table>
 
-                    <h2 class="title"><?php _e( 'Post pageviews', 'sig-ga4-widget' )?></h2>
+                    <h2 class="title"><?php _e( 'Post pageviews', 'sig-ga4-widget' )?>&nbsp;<span style="font-size: 13px;"><?php _e( '( Notice! Each post will call the api once. )', 'sig-ga4-widget' )?></span></h2>
+
                     <table class="form-table">
 
                         <tr valign="top">
@@ -91,6 +94,21 @@ if ( ! defined( 'ABSPATH' ) ) {
                             </td>
                         </tr>
 
+                        <tr valign="top">
+                            <th scope="row"><?php _e( 'Position', 'sig-ga4-widget' )?></th>
+                            <td>
+                                <?php $post_pv_pos = ( !empty($this->options['post_pv_pos']) ) ? $this->options['post_pv_pos']:''; ?>
+                                <select size="1" name="<?php echo SIGA4W_OPTION."[post_pv_pos]"?>">
+                                    <option value="top-left" <?php selected( 'top-left', $post_pv_pos );?>><?php _e( 'Top Left', 'sig-ga4-widget' ); ?>&nbsp;(↖)</option>
+                                    <option value="top-center" <?php selected( 'top-center', $post_pv_pos );?>><?php _e( 'Top Center', 'sig-ga4-widget' ); ?>&nbsp;(↑)</option>
+                                    <option value="top-right" <?php selected( 'top-right', $post_pv_pos );?>><?php _e( 'Top Right', 'sig-ga4-widget' ); ?>&nbsp;(↗)</option>
+                                    <option value="bottom-left" <?php selected( 'bottom-left', $post_pv_pos );?>><?php _e( 'Bottom Left', 'sig-ga4-widget' ); ?>&nbsp;(↙)</option>
+                                    <option value="bottom-center" <?php selected( 'bottom-center', $post_pv_pos );?>><?php _e( 'Bottom Center', 'sig-ga4-widget' ); ?>&nbsp;(↓)</option>
+                                    <option value="bottom-right" <?php selected( 'bottom-right', $post_pv_pos );?>><?php _e( 'Bottom Right', 'sig-ga4-widget' ); ?>&nbsp;(↘)</option>
+                                </select>
+                            </td>
+                        </tr>
+
 
                     </table>
 
@@ -108,7 +126,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <p><?php _e( 'Caution! This plug-in uses the Google Analytics Data API, and there is a daily limit on the number of calls (50,000). If the number of requests exceeds, you may need to pay for it. (You can set the cache time in the settings to avoid exceeding the number of calls)', 'sig-ga4-widget' )?></p>
 
                     <h2><?php _e( 'How to setup:', 'sig-ga4-widget' ); ?></h2>
-                    <ol style="font-size: 15px;">
+                    <ol>
                         <li>登入 https://console.cloud.google.com/apis/ 。點左側選單<b>「已啟用的API和服務」</b>：啟用「Google Analytics Data API」服務（已啟用過的就不需此步驟）。</li>
                         <li>點左側選單<b>「憑證」</b>：點<b>「+建立憑證」</b> -> 選<b>「服務帳戶」</b>（輸入服務帳戶名稱、服務帳戶ID，並記住該員電子郵件地址，點<b>「建立並繼續」</b>到下一步）。</li>
                         <li>選擇角色：選<b>「App Engine 管理員」</b>-> 點<b>「繼續」</b>，再點<b>「完成」</b>。在<b>「服務帳戶」</b>清單，點該員電子郵件進入。點<b>「金鑰」</b> -> 點<b>「新增金鑰」</b> -> 選<b>「建立新的金鑰」</b>，金鑰類型選<b>「json」</b>並保存下載檔案。</li>

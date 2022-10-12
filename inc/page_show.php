@@ -4,11 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<style type="text/css">
-#ga4_daily_chart, #ga4_month_chart{
-    width:100%;height: 250px;background-color: #fff;border:1px solid #c3c4c7;margin-bottom: 10px;
-}
-</style>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6" style="margin-bottom: 30px;">
@@ -88,6 +84,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 </div>
 
+<style type="text/css">
+#ga4_daily_chart, #ga4_month_chart{ width:100%;height: 250px;background-color: #fff;border:1px solid #c3c4c7;margin-bottom: 10px; }
+</style>
 
 <script type="text/javascript">
 <?php if( !isset($theMonth['message']) ):

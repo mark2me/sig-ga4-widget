@@ -64,6 +64,7 @@ class SIGA4W_init{
             require_once( SIGA4W_DIR . '/classes/widget.php' );
             require_once( SIGA4W_DIR . '/classes/ga4.php' );
         }
+
     }
 
 
@@ -92,6 +93,29 @@ class SIGA4W_init{
      *  Setting page
      */
     public function cb_page_setting() {
+
+        if( empty($this->options['json_key']) or empty($this->options['property_id']) ){
+
+            add_settings_error(
+                'siga4w-settings-notices',
+                'settings_json_id',
+                __( 'Please upload the json file and fill in the web property id.', 'sig-ga4-widget' ),
+                'error'
+            );
+
+        }else{
+
+            $test = siga4w_get_data();
+
+            if( !empty($test['message']) ){
+                add_settings_error( 'siga4w-settings-notices', 'settings_test',
+                    /* translators: %1$s is error message, %2$s is status. */
+                    sprintf( __( 'Error: %1$s<br>Status: %2$s', 'sig-ga4-widget' ), $test['message'], (!empty($test['status']) ? $test['status']:'') ),
+                    'error'
+                );
+            }
+        }
+
         require_once( SIGA4W_DIR . '/inc/page_setting.php' );
     }
 
@@ -166,7 +190,8 @@ class SIGA4W_init{
             $option['begin_date'] = preg_replace('/[^\d-]/', '', $option['begin_date']);
             $option['cache_time'] = preg_replace('/[^\d]/', '', $option['cache_time']);
 
-            $option['post_pv_label'] = siga4w_strip_tags($option['post_pv_label']);
+            $option['post_pv_label'] = strip_tags($option['post_pv_label']);
+            $option['post_pv_pos'] = strip_tags($option['post_pv_pos']);
         }
 
         //clear transient
@@ -220,6 +245,7 @@ class SIGA4W_init{
 
     /**
      *  Add pageviews on post content
+     *  @since 1.0.1 add option:post_pv_pos
      */
     public function add_post_pv($content) {
 
@@ -228,8 +254,32 @@ class SIGA4W_init{
             if( !empty($this->options['post_pv'][get_post_type()]) && $this->options['post_pv'][get_post_type()] == 'yes' ){
 
                 $pv_label = ( !empty($this->options['post_pv_label']) ) ? $this->options['post_pv_label'] : $this->def_pv_label;
+                $pv_label = sprintf( $pv_label, number_format($this->get_pageviews()) );
 
-                $content = sprintf( $pv_label, $this->get_pageviews() ) . $content;
+                $pos = ( !empty($this->options['post_pv_pos']) ) ? $this->options['post_pv_pos'] : 'top-left';
+                $pos = explode('-',$pos);
+
+                if( !empty($pos[1]) ){
+                    switch ($pos[1]){
+                        case 'center':
+                            $pv_label = "<div style=\"text-align:center\">{$pv_label}</div>";
+                        break;
+                        case 'right':
+                            $pv_label = "<div style=\"text-align:right\">{$pv_label}</div>";
+                        break;
+                        default:
+                            $pv_label = "<div style=\"text-align:left\">{$pv_label}</div>";
+                        break;
+                    }
+                }else{
+                    $pv_label = "<div>{$pv_label}</div>";
+                }
+
+                if( isset($pos[0]) && $pos[0] == 'bottom' ){
+                    $content = $content . $pv_label;
+                }else{
+                    $content = $pv_label . $content;
+                }
             }
         }
 

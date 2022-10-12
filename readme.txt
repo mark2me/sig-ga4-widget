@@ -3,7 +3,7 @@ Contributors: simon_tw
 Tags: google, analytics, ga, ga4, google analytics, tracking, pixnet
 Requires at least: 5.9
 Tested up to: 6.0.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ e.g.
 1. screenshot-1.png
 
 == Changelog ==
+
+= 1.0.1 =
+* Fixed something and add something.
 
 = 1.0 =
 * Initial Public Release
