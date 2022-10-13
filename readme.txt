@@ -15,14 +15,21 @@ Show your google analytics 4 visit data on your template widget.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+= Automatic installation =
 
-e.g.
+1. Login your WordPress admin
+2. Click __Plugins__
+3. Click __Add New__
+4. Search for __Sig GA4 Widget__
+5. Click __Install Now__ under "Sig GA4 Widget"
+6. Activate the plugin
 
-1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the `Plugins` screen in WordPress.
-1. Go to `Settings` -> `GA4 widget config` to configure the plugin.
-1. Go to `Widget` setup your sidebar widget.
+= Manual installation =
+
+1. Download the plugin
+2. Extract the contents of the zip file
+3. Upload the contents of the zip file to the `wp-content/plugins/` folder of your WordPress installation
+4. Activate the Sig GA4 Widget plugin from 'Plugins' page.
 
 == Screenshots ==
 
@@ -31,7 +38,7 @@ e.g.
 == Changelog ==
 
 = 1.0.1 =
-* Fixed something and add something.
+* Add choose post pageview position.
 
 = 1.0 =
 * Initial Public Release

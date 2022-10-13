@@ -3,8 +3,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-settings_errors( 'siga4w-settings-notices' );
-
 ?>
 
 <div class="wrap">

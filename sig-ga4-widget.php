@@ -22,7 +22,7 @@ define( 'SIGA4W_BEGIN_DATE', '2020-01-01');
 
 require_once( SIGA4W_DIR . '/vendor/autoload.php' );
 require_once( SIGA4W_DIR . '/inc/helper.php' );
-require_once( SIGA4W_DIR . '/classes/uppgrade.php' );
+require_once( SIGA4W_DIR . '/inc/upgrade.php' );
 
 new SIGA4W_init();
 
@@ -47,9 +47,11 @@ class SIGA4W_init{
 
         add_filter( 'plugin_action_links_'.plugin_basename(__FILE__), [ $this , 'add_settings_link' ] );
 
+        add_action( 'wp_enqueue_scripts', [ $this, 'add_wp_enqueues' ] );
+
         add_action( 'admin_menu', [ $this, 'add_admin_menu' ] );
 
-        add_action( 'admin_enqueue_scripts', [ $this, 'add_enqueues' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'add_admin_enqueues' ] );
 
         add_action( 'admin_init', [ $this, 'register_settings_fields' ] );
 
@@ -131,9 +133,16 @@ class SIGA4W_init{
     }
 
     /**
+     *  Load jquery
+     */
+    public function add_wp_enqueues() {
+        wp_enqueue_script( 'jquery' );
+    }
+
+    /**
      * Add style & script files
      */
-    public function add_enqueues($hook){
+    public function add_admin_enqueues($hook){
 
         if( in_array( $hook, array( 'settings_page_siga4w_setting', 'toplevel_page_siga4w_page' ) ) ) {
             wp_enqueue_style( 'bootstrap4', SIGA4W_PLUGIN_URL . 'assets/css/bootstrap-grid.min.css' );
