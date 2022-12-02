@@ -7,10 +7,10 @@ Author: Simon Chuang
 Author URI: https://github.com/mark2me
 Text Domain: sig-ga4-widget
 Domain Path: /languages/
-Version: 1.0.1
+Version: 1.1
 */
 
-define( 'SIGA4W_VERSION', '1.0.1' );
+define( 'SIGA4W_VERSION', '1.1' );
 define( 'SIGA4W_OPTION', '_siga4w_setting' );
 define( 'SIGA4W_OPTION_GROUP', '_siga4w_setting_group' );
 define( 'SIGA4W_DIR', dirname(__FILE__) );
