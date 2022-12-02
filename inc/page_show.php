@@ -11,8 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             <?php
                 $theMonth = siga4w_get_data( [
-                    'dateRange' => [ date("Y-m-01"), date("Y-m-t") ]
-                    ], 'cache_theMonth' );
+                    'dateRange' => [ date("Y-m-01"), date("Y-m-t") ],
+                    'metrics' => ['totalUsers', 'screenPageViews'],
+                    'dimensions' => ['date'],
+                    ], 'chart_the_month' );
             ?>
             <h3><?php _e( 'Current month', 'sig-ga4-widget' ) ?></h3>
             <div id="ga4_daily_chart"><?php
@@ -30,8 +32,9 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php
                 $theYear = siga4w_get_data( [
                     'dateRange' => [ date("Y-01-01"), date("Y-m-t") ],
+                    'metrics' => ['totalUsers', 'screenPageViews'],
                     'dimensions' => ['month'],
-                    ], 'cache_theYear' );
+                    ], 'chart_the_year' );
             ?>
             <h3><?php _e( 'Current year' , 'sig-ga4-widget' ) ?></h3>
             <div id="ga4_month_chart"><?php
@@ -52,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     'dimensions' => ['pageTitle', 'fullPageUrl'],
                     'metrics' => ['screenPageViews'],
                     'limit' => 10
-                    ], 'cache_hot' );
+                    ], 'chart_hot_10' );
             ?>
             <h3><?php _e( 'Popular Posts (last 7 days)', 'sig-ga4-widget' ) ?></h3>
             <?php

@@ -345,12 +345,96 @@ class SIGA4W_widget extends WP_Widget {
 
     }
 
+}
 
+/*
+ *
+ */
 
+class SIGA4W_rt_widget extends WP_Widget {
+
+    function __construct() {
+
+        parent::__construct(
+            'siga4w_rt_widget',
+            __( 'Real time visite', 'sig-ga4-widget' ),
+            [ 'description' => __( 'Display real time on website.', 'sig-ga4-widget' ) ]
+        );
+    }
+
+    public function widget( $args, $instance ) {
+
+        extract($instance);
+
+        $widget_id = ( !empty($args['widget_id']) ) ? $args['widget_id'] : '';
+
+        $realTime = siga4w_get_data( [
+            'type' => 'realtime',
+            'metrics' => [ 'activeUsers' ],
+            'dimensions' => [ 'country' ],
+            'minuteRanges' => [10,0]
+        ], '' );
+
+/*
+Array
+(
+    [Taiwan] => Array
+        (
+            [activeUsers] => 1
+        )
+)
+*/
+        // output
+        $content = '';
+        $content .= $args['before_widget'];
+
+        if( isset($title) && $title !== '' ){
+            $content .= "{$args['before_title']}{$title}{$args['after_title']}";
+        }
+
+        $content .= '<div id="'.$widget_id.'_inner">線上人數'.print_r($realTime,true).'</div>';
+
+        $content .= $args['after_widget'];
+
+        echo $content;
+
+    }
+
+    public function form( $instance ) {
+
+        if( empty($instance) ){
+            $instance = wp_parse_args( (array) $instance, $this->def_val );
+        }
+    ?>
+        <p>
+            <label><?php _e( 'Custom title:' , 'sig-ga4-widget' )?></label>
+            <input class="widefat" type="text" name="<?php echo $this->get_field_name('title');?>" value="<?php echo esc_attr($instance['title']); ?>">
+        </p>
+    <?php
+    }
+
+    public function update( $new_instance, $old_instance ) {
+
+        $instance = $old_instance;
+
+        $instance['title'] = siga4w_strip_tags( $new_instance['title'] );
+
+/*
+        $instance['pageview_today_label']   = siga4w_strip_tags( $new_instance['pageview_today_label'] );
+        $instance['pageview_today_show']    = strip_tags( $new_instance['pageview_today_show'] );
+        $instance['pageview_today_adjust']  = (!empty($new_instance['pageview_today_adjust'])) ? preg_replace( '/[^0-9]/', '', $new_instance['pageview_today_adjust'] ) : 0;
+*/
+
+        //clear transient
+        siga4w_del_cache();
+
+        return $instance;
+    }
 }
 
 function siga4w_load_ga4_widgets(){
     register_widget( 'SIGA4W_widget' );
+    register_widget( 'SIGA4W_rt_widget' );
 }
 
 add_action( 'widgets_init', 'siga4w_load_ga4_widgets' );

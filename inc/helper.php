@@ -27,13 +27,14 @@ function siga4w_get_data($args=[],$cache_name=''){
 
         $ga4 = new SIGA4W_ga4($options['property_id']);
 
+        if( !empty($args['dateRange']) )  $ga4->setDateRanges($args['dateRange'][0],$args['dateRange'][1]);
+        if( !empty($args['minuteRanges']) )  $ga4->setMinuteRanges($args['minuteRanges'][0],$args['minuteRanges'][1]);
         if( !empty($args['metrics']) )  $ga4->setMetricsName($args['metrics']);
         if( !empty($args['dimensions']) )  $ga4->setDimensionsName( $args['dimensions'] );
-        if( !empty($args['dateRange']) )  $ga4->setDateRanges($args['dateRange'][0],$args['dateRange'][1]);
         if( !empty($args['dimensionFilter']) )  $ga4->setDimensionFilter($args['dimensionFilter']);
         if( !empty($args['limit']) )  $ga4->setLimit($args['limit']);
 
-        $data = $ga4->getData();
+        $data = $ga4->getData( ( isset($args['type']) && $args['type'] == 'realtime' ) ? 'realtime':'' );
 
         if( $cache_name !== '' &&  !isset($data['message']) ) {
             set_transient( $cache_name, $data, siga4w_get_cache_time() );
@@ -135,6 +136,9 @@ function siga4w_isJson($string) {
 function siga4w_del_cache(){
     delete_transient('siga4w_get_today_cache');
     delete_transient('siga4w_get_all_cache');
+    delete_transient('chart_the_month');
+    delete_transient('chart_the_year');
+    delete_transient('chart_hot_10');
 }
 
 /**

@@ -9,6 +9,7 @@
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\Metric;
 use Google\Analytics\Data\V1beta\DateRange;
+use Google\Analytics\Data\V1beta\MinuteRange;
 use Google\Analytics\Data\V1beta\Dimension;
 use Google\Analytics\Data\V1beta\Filter;
 use Google\Analytics\Data\V1beta\FilterExpression;
@@ -18,6 +19,8 @@ class SIGA4W_ga4 {
     private $property;
 
     private $dateRanges = [];
+
+    private $minuteRanges = [];
 
     private $dimensions = [];
 
@@ -39,28 +42,26 @@ class SIGA4W_ga4 {
     /**
      *  @return array
      */
-    public function getData(){
+    public function getData($type=''){
 
-        if(empty($this->dimensions)) $this->setDimensionsName(['date']);
-        if(empty($this->dateRanges)) $this->setDateRanges('today','today');
-        if(empty($this->metrics)) $this->setMetricsName($this->metrics_list);
+        $args['property'] = $this->property;
 
-        $args = [
-            'property'      => $this->property,
-            'dateRanges'    => $this->dateRanges,
-            'dimensions'    => $this->dimensions,
-            'metrics'       => $this->metrics,
-        ];
+        if( !empty($this->dateRanges) ) $args['dateRanges'] = $this->dateRanges;
+        if( !empty($this->minuteRanges) ) $args['minuteRanges'] = $this->minuteRanges;
 
+        if( !empty($this->dimensions) ) $args['dimensions'] = $this->dimensions;
+        if( !empty($this->metrics) ) $args['metrics'] = $this->metrics;
         if( !empty($this->dimensionFilter) )  $args['dimensionFilter'] = $this->dimensionFilter;
-
-        if( $this->limit > 0 ) $args['limit'] = $this->limit;
-
+        if( !empty($this->limit) ) $args['limit'] = $this->limit;
 
         try {
             $client = new BetaAnalyticsDataClient();
 
-            $response = $client->runReport($args);
+            if( $type == 'realtime' ){
+                $response = $client->runRealtimeReport($args);
+            }else{
+                $response = $client->runReport($args);
+            }
 
             $data = [];
 
@@ -123,10 +124,21 @@ class SIGA4W_ga4 {
      *  @param string $start_date
      *  @param string $end_date
      */
-    public function setDateRanges($start_date,$end_date){
+    public function setDateRanges($start_date='',$end_date=''){
 
         $dateRange = new DateRange();
         $this->dateRanges[] = $dateRange->setStartDate($start_date)->setEndDate($end_date);
+        return $this;
+    }
+
+    /**
+     *
+     *
+     */
+    public function setMinuteRanges($start_min=0,$end_min=0){
+
+        $minuteRange = new MinuteRange();
+        $this->minuteRanges[] = $minuteRange->setStartMinutesAgo($start_min)->setEndMinutesAgo($end_min);
         return $this;
     }
 

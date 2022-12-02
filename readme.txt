@@ -3,7 +3,7 @@ Contributors: simon_tw
 Tags: google, analytics, ga, ga4, google analytics, tracking, pixnet
 Requires at least: 5.9
 Tested up to: 6.0.2
-Stable tag: 1.0.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,9 @@ Show your google analytics 4 visit data on your template widget.
 1. screenshot-1.png
 
 == Changelog ==
+
+= 1.1 =
+* Add Realtime users number.
 
 = 1.0.1 =
 * Add choose post pageview position.

@@ -71,7 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <tr valign="top">
                             <th scope="row"><?php _e( 'Pageview label text', 'sig-ga4-widget' )?></th>
                             <td><input type="text" class="regular-text" name="<?php echo SIGA4W_OPTION?>[post_pv_label]" value="<?php if ( !empty($this->options['post_pv_label']) ) echo esc_attr($this->options['post_pv_label']); ?>" />
-                                <p><?
+                                <p><?php
                                     _e( 'Default label', 'sig-ga4-widget' );
                                     echo '<code>' . esc_attr($this->def_pv_label) . '</code>';
                                 ?></p>
